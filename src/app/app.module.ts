@@ -15,9 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { LdapDetailsComponent } from './ldap-details/ldap-details.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import { LdapEditComponent } from './ldap-edit/ldap-edit.component';
+import { LdapAddComponent } from './ldap-add/ldap-add.component';
+import { AlertComponent } from './share/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {MatInputModule} from "@angular/material/input";
     LdapListComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    LdapDetailsComponent
+    LdapEditComponent,
+    LdapAddComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
