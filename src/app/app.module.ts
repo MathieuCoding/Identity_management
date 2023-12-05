@@ -29,7 +29,12 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     BrowserAnimationsModule,
     AppMaterialModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

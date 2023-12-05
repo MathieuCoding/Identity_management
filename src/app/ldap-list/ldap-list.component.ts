@@ -2,11 +2,12 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserLdap} from "../models/user-ldap";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {LDAP_USERS} from "../models/ldap-mock-data";
 
 @Component({
   selector: 'app-ldap-list',
   templateUrl: './ldap-list.component.html',
-  styleUrls: ['./ldap-list.component.css']
+  styleUrls: ['./ldap-list.component.css'] // or .scss ?
 })
 export class LdapListComponent implements OnInit {
   displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero'];
