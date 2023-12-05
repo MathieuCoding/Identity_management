@@ -10,6 +10,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -29,6 +32,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+
   ]
 })
 export class AppMaterialModule { }

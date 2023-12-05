@@ -2,7 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserLdap} from "../models/user-ldap";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
-import {LDAP_USERS} from "../models/ldap-mock-data";
+import {UsersService} from "../service/users.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ldap-list',
@@ -14,8 +15,9 @@ export class LdapListComponent implements OnInit {
   dataSource = new MatTableDataSource<UserLdap>([]);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null;
+  private unactiveSelected: any;
 
-  constructor() {
+  constructor(private usersService: UsersService, private router: Router) { // TODO: custom added
     this.paginator = null;
   }
 
@@ -25,7 +27,25 @@ export class LdapListComponent implements OnInit {
   }
 
   private getUsers(): void {
-    this.dataSource.data = LDAP_USERS;
+    this.usersService.getUsers().subscribe(
+      users => {
+        if (this.unactiveSelected) {
+          this.dataSource.data = users.filter(user =>
+            !user.active
+          );
+        } else {
+          this.dataSource.data = users
+        }
+      }
+    )
+  }
+
+  edit(login: string): void {
+    this.router.navigate(['user/', login]).then((e) => {
+      if (!e) {
+        console.error('Navigation has failed!');
+      }
+    });
   }
 
 }
