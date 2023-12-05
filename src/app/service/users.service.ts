@@ -13,7 +13,7 @@ export class UsersService {
   constructor() {
   }
 
-  getUsers(): Observable<UserLdap[]> {
+  getUsers(login: string): Observable<UserLdap[]> {
     return of(this.users);
   }
 

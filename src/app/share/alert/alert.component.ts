@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-alert',
@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent {
+  @Input() type: string;
+  cssClass: string[] = ['alert', 'alert-dismissible', 'fade'];
 
+  constructor() {
+    this.type = 'info';
+  }
+
+  ngOnInit(): void {
+    let alert = 'alert-info';
+    switch (this.type) {
+      case 'success': alert = 'alert-success'; break;
+      case 'danger': alert = 'alert-danger'; break;
+      case 'warning': alert = 'alert-warning'; break;
+    }
+    this.cssClass.push(alert);
+  }
+
+  removeAlert() {
+    this.cssClass = ['alert-hide'];
+  }
 }

@@ -1,17 +1,22 @@
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../service/users.service";
 import {UserLdap} from "../models/user-ldap";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
+import {
+  ConfirmValidParentMatch,
+  ConfirmValidParentMatcher,
+  passwordMatchingValidator
+} from "./passwords-validator.directive";
 
 export abstract class LdapDetailsComponent {
 
-  user: UserLdap | undefined;
+  user: UserLdap[] | undefined;
   processLoadRunning = false;
   processValidateRunning = false;
   // Le PlaceHolder pour les mots de passe en fonction de l'édition ou non
   passwordPlaceHolder: string;
   // Message d'erreur
-  errorMessage: '';
+  errorMessage: string | undefined; // ''
 
   userForm = this.fb.group({
     login: [''],
@@ -21,9 +26,12 @@ export abstract class LdapDetailsComponent {
     passwordGroup: this.fb.group({
       password: [''],
       confirmPassword: ['']
-    }),
+    },
+      {validators: passwordMatchingValidator}),
     mail: {value: '', disabled: true},
   })
+
+  get passwordForm() { return this.userForm.get('passwordGroup'); }
 
   protected constructor(
     public addForm: boolean,
@@ -31,7 +39,11 @@ export abstract class LdapDetailsComponent {
     private fb: FormBuilder,
     private router: Router,
   ) {
-    this.passwordPlaceHolder = 'Mot de passe' + (this.addForm ? '' : '(vide si inchangé)')
+    this.passwordPlaceHolder = 'Mot de passe' + (this.addForm ? '' : '(vide si inchangé)');
+    if (this.addForm) {
+      this.passwordForm?.get('password')?.addValidators(Validators.required);
+      this.passwordForm?.get('confirmPassword')?.addValidators(Validators.required);
+    }
   }
 
   ngOnInit() {
@@ -128,6 +140,15 @@ export abstract class LdapDetailsComponent {
       return;
     }
     control.setValue(this.formGetValue('login').toLowerCase() + '@epsi.lan');
+  }
+
+  confirmValidParentMatcher = new ConfirmValidParentMatcher();
+
+  getErrorMessage(): string {
+    if (this.passwordForm?.errors) {
+      return "Les mots de passe ne corresponds pas !";
+    }
+    return "Entrez un mot de passe";
   }
 
 

@@ -20,6 +20,7 @@ import {MatInputModule} from "@angular/material/input";
 import { LdapEditComponent } from './ldap-edit/ldap-edit.component';
 import { LdapAddComponent } from './ldap-add/ldap-add.component';
 import { AlertComponent } from './share/alert/alert.component';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
