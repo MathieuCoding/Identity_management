@@ -12,11 +12,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class LdapEditComponent extends LdapDetailsComponent implements OnInit {
 
-  constructor(private usersService: UsersService,
-              private route: ActivatedRoute,
-              fb: FormBuilder,
-              router: Router,
-              private snackBar: MatSnackBar) {
+  constructor(
+    private usersService: UsersService,
+    private route: ActivatedRoute,
+    fb: FormBuilder,
+    router: Router,
+    private snackBar: MatSnackBar
+  ) {
     super(false, fb, router);
   }
 

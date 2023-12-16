@@ -1,9 +1,7 @@
-import {ActivatedRoute, Router} from "@angular/router";
-import {UsersService} from "../service/users.service";
+import {Router} from "@angular/router";
 import {UserLdap} from "../models/user-ldap";
 import {FormBuilder, Validators} from "@angular/forms";
 import {
-  ConfirmValidParentMatch,
   ConfirmValidParentMatcher,
   passwordMatchingValidator
 } from "./passwords-validator.directive";
@@ -46,7 +44,7 @@ export abstract class LdapDetailsComponent {
     }
   }
 
-  ngOnInit() {
+  protected onInit() {
     // Permet d'initialiser le formulare au cas où
     // Nous n'en avons pas besoin ici
   }
@@ -91,6 +89,7 @@ export abstract class LdapDetailsComponent {
     this.formSetValue('nom', this.user.nom);
     this.formSetValue('prenom', this.user.prenom);
     this.formSetValue('mail', this.user.mail);
+    /* Il faudra ajouter les champs suivant au formulaire */
     // this.formSetValue('employeNumero', this.user.employeNumero);
     // this.formSetValue('employeNiveau', this.user.employeNiveau);
     // this.formSetValue('dateEmbauche', this.user.dateEmbauche);
@@ -116,7 +115,7 @@ export abstract class LdapDetailsComponent {
       role: 'ROLE_USER',
   };
   }
-  isFormValid() {
+  isFormValid(): boolean {
     return this.userForm.valid
     // Exemple de validation d'un champ:
     && (!this.addForm || this.formGetValue('passwordGroup.password') !== '')

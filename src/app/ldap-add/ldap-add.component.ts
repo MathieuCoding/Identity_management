@@ -12,32 +12,18 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class LdapAddComponent extends LdapDetailsComponent implements OnInit {
 
-    constructor(private usersService: UsersService,
-                fb: FormBuilder,
-                router: Router,
-                private snackBar: MatSnackBar) {
+    constructor(
+      private usersService: UsersService,
+      fb: FormBuilder,
+      router: Router,
+      private snackBar: MatSnackBar
+    ) {
       super(true, fb, router);
     }
 
     ngOnInit() {
       super.onInit();
     }
-
-  private getUser() {
-    const login = this.route.snapshot.paramMap.get('login');
-
-    if (login === null) {
-      console.error('Can\'t retrieve user id from URL');
-      return;
-    }
-
-    this.usersService.getUser(login).subscribe(
-      user => {
-        this.user = user;
-        console.log('LdapDetails getUser: ' + user);
-      }
-    )
-  }
 
   validateForm() {
     console.log('LdapAddComponent - validateForm');
