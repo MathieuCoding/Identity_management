@@ -1,12 +1,12 @@
 import {Router} from "@angular/router";
-import {UserLdap} from "../models/user-ldap";
 import {FormBuilder, Validators} from "@angular/forms";
 import {
   ConfirmValidParentMatcher,
   passwordMatchingValidator
 } from "./passwords-validator.directive";
+import {UserLdap} from "../models/user-ldap";
 
-export abstract class LdapDetailsComponent {
+export abstract class LdapDetailsComponent{
 
   user: UserLdap[] | undefined;
   processLoadRunning = false;

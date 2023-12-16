@@ -4,6 +4,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {UsersService} from "../service/users.service";
 import {Router} from "@angular/router";
+import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 
 @Component({
   selector: 'app-ldap-list',
@@ -15,7 +16,7 @@ export class LdapListComponent implements OnInit {
   dataSource = new MatTableDataSource<UserLdap>([]);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null;
-  private unactiveSelected: any;
+  inactiveSelected: any;
 
   constructor(private usersService: UsersService, private router: Router) { // TODO: custom added
     this.paginator = null;
@@ -23,13 +24,32 @@ export class LdapListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.filterPredicate = (data: UserLdap, filter: string) => this.filterPredicate(data, filter);
     this.getUsers();
   }
 
-  private getUsers(): void {
-    this.usersService.getUsers(login).subscribe(
+  filterPredicate(data: UserLdap, filter: string): boolean {
+    return !filter || data.nomComplet.toLowerCase().startsWith(filter);
+  }
+
+  applyFilter($event: KeyboardEvent): void {
+    const filterValue = ($event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  // private getUsers(): void {
+  //   if (this.unactiveSelected) {
+  //     this.dataSource.data = LDAP_USERS.filter(user
+  //       => !user.active
+  //     )
+  //   } else {
+  //     this.dataSource.data = LDAP_USERS;
+  //   }
+  // }
+  getUsers(): void {
+    this.usersService.getUsers().subscribe(
       users => {
-        if (this.unactiveSelected) {
+        if (this.inactiveSelected) {
           this.dataSource.data = users.filter(user =>
             !user.active
           );
@@ -38,6 +58,11 @@ export class LdapListComponent implements OnInit {
         }
       }
     )
+  }
+
+  unactiveChanged($event: MatSlideToggleChange): void {
+    this.inactiveSelected = $event.checked;
+    this.getUsers();
   }
 
   edit(login: string): void {

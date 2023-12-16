@@ -3,6 +3,18 @@
           (click)="addUser()">
     Ajouter un utilisateur
   </button><br /> <br />
+  <div class="toolbar-filter">
+    <mat-form-field style="width: 48%">
+      <mat-label>Nom complet</mat-label>
+      <input matInput (keyup)="applyFilter($event)"
+             placeholder="Entrez le début d'un nom"/>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-slide-toggle [checked]="inactiveSelected"
+                      (change)="inactiveSelected($event)">
+      Utilisateur déactivé uniquement
+    </mat-slide-toggle>
+  </div>
   <table mat-table [dataSource]="dataSource">
 
     <!-- Nom complet column -->
