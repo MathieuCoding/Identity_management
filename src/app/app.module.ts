@@ -8,6 +8,9 @@ import { NavbarComponent } from './ldap-management/navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LdapManagementModule } from './ldap-management/ldap-management.module';
 import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryUsersService} from "./service/in-memory-users.service";
 
 @NgModule({
   declarations: [
@@ -22,6 +25,10 @@ import { AppRoutingModule } from './app-routing.module';
     AppMaterialModule,
     LdapManagementModule,
     AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryUsersService, {dataEncapsulation: false}
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
