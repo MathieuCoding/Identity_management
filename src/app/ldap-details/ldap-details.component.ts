@@ -1,14 +1,16 @@
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {
   ConfirmValidParentMatcher,
   passwordMatchingValidator
 } from "./passwords-validator.directive";
 import {UserLdap} from "../models/user-ldap";
+import {Location} from "@angular/common";
+import {UsersService} from "../service/users.service";
 
 export abstract class LdapDetailsComponent{
 
-  user: UserLdap[] | undefined;
+  user: UserLdap | undefined;
   processLoadRunning = false;
   processValidateRunning = false;
   // Le PlaceHolder pour les mots de passe en fonction de l'édition ou non
@@ -33,7 +35,6 @@ export abstract class LdapDetailsComponent{
 
   protected constructor(
     public addForm: boolean,
-    // A VOIR protected route: ActivateRoute
     private fb: FormBuilder,
     private router: Router,
   ) {

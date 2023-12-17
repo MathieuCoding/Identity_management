@@ -52,7 +52,7 @@ export class LdapEditComponent extends LdapDetailsComponent implements OnInit {
       return;
     }
 
-    this.usersService.getUsers(login).subscribe({
+    this.usersService.getUser(login).subscribe({
       next: (user) => {
         this.user = user;
         this.copyUserToFormControl();
