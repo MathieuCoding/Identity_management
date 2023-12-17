@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UserLdap} from "../models/user-ldap";
+import {UserLdap} from "../../models/user-ldap";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
-import {UsersService} from "../service/users.service";
+import {UsersService} from "../../service/users.service";
 import {Router} from "@angular/router";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 

@@ -4,7 +4,7 @@ import {
   ConfirmValidParentMatcher,
   passwordMatchingValidator
 } from "./passwords-validator.directive";
-import {UserLdap} from "../models/user-ldap";
+import {UserLdap} from "../../models/user-ldap";
 
 export abstract class LdapDetailsComponent{
 
