@@ -1,12 +1,10 @@
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {
   ConfirmValidParentMatcher,
   passwordMatchingValidator
 } from "./passwords-validator.directive";
 import {UserLdap} from "../models/user-ldap";
-import {Location} from "@angular/common";
-import {UsersService} from "../service/users.service";
 
 export abstract class LdapDetailsComponent{
 
