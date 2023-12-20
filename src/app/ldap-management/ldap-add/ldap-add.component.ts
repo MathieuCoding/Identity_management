@@ -33,7 +33,7 @@ export class LdapAddComponent extends LdapDetailsComponent implements OnInit {
       {next: (value) => {
         this.processValidateRunning = false;
         this.errorMessage = '';
-        this.snackBar.open('Utilisateur modifié', 'X');
+        this.snackBar.open('Utilisateur ajouté', 'X');
       },
       error: (err) => {
         this.processValidateRunning = false;
