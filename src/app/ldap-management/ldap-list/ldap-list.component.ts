@@ -12,11 +12,11 @@ import {MatSlideToggleChange} from "@angular/material/slide-toggle";
   styleUrls: ['./ldap-list.component.css'] // or .scss ?
 })
 export class LdapListComponent implements OnInit {
-  displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero'];
+  displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero', 'login'];
   dataSource = new MatTableDataSource<UserLdap>([]);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null;
-  inactiveSelected: any;
+  inactiveSelected: any; //TODO false ?
 
   constructor(private usersService: UsersService, private router: Router) { // TODO: custom added
     this.paginator = null;
@@ -60,7 +60,7 @@ export class LdapListComponent implements OnInit {
     )
   }
 
-  unactiveChanged($event: MatSlideToggleChange): void {
+  inactiveChanged($event: MatSlideToggleChange): void {
     this.inactiveSelected = $event.checked;
     this.getUsers();
   }
@@ -74,7 +74,7 @@ export class LdapListComponent implements OnInit {
   }
 
   addUser() {
-    this.router.navigate(['user/add']).then((e) => {
+    this.router.navigate(['/user/add']).then((e) => { // TODO /user/add
       if (!e) {
         console.log('Navigation has failed!');
       }

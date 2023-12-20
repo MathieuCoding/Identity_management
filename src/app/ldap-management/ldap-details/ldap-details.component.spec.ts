@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LdapDetailsComponent } from './ldap-details.component';
+import {MatIconModule} from "@angular/material/icon";
 
 describe('LdapDetailsComponent', () => {
   let component: LdapDetailsComponent;
@@ -8,7 +9,10 @@ describe('LdapDetailsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LdapDetailsComponent]
+      declarations: [LdapDetailsComponent],
+      imports: [
+        MatIconModule, //TODO
+      ]
     });
     fixture = TestBed.createComponent(LdapDetailsComponent);
     component = fixture.componentInstance;

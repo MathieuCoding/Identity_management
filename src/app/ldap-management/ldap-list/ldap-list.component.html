@@ -15,8 +15,8 @@
       Utilisateur déactivé uniquement
     </mat-slide-toggle>
   </div>
-  <table mat-table [dataSource]="dataSource">
 
+  <table mat-table [dataSource]="dataSource">
     <!-- Nom complet column -->
     <ng-container matColumnDef="nomComplet">
       <th mat-header-cell *matHeaderCellDef> Nom complet </th>
@@ -35,6 +35,15 @@
       <td mat-cell *matCellDef="let element"> {{element.employeNumero}} </td>
     </ng-container>
 
+    <!-- login Column -->
+    <ng-container matColumnDef="login">
+      <th mat-header-cell *matHeaderCellDef>
+        Login
+      </th>
+      <td mat-cell *matCellDef="let element">{{element.login}}</td>
+    </ng-container>
+
+    <!-- header and row declarations -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         (click)="edit(row.login)"
