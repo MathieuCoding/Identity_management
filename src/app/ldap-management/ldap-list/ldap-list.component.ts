@@ -12,7 +12,7 @@ import {MatSlideToggleChange} from "@angular/material/slide-toggle";
   styleUrls: ['./ldap-list.component.css'] // or .scss ?
 })
 export class LdapListComponent implements OnInit {
-  displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero', 'login'];
+  displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero']; //TODO login
   dataSource = new MatTableDataSource<UserLdap>([]);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null;
