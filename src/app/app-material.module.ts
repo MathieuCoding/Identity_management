@@ -17,6 +17,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -26,7 +27,7 @@ import {MatInputModule} from "@angular/material/input";
     CommonModule
   ],
   exports: [
-    BrowserAnimationsModule,
+    //BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -43,6 +44,7 @@ import {MatInputModule} from "@angular/material/input";
     MatSlideToggleModule,
     MatInputModule,
     MatSnackBarModule,
+    MatCardModule,
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500, verticalPosition: 'top'}}

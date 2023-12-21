@@ -12,6 +12,8 @@ import {AppMaterialModule} from "../app-material.module";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryUsersService} from "../service/in-memory-users.service";
+import {AppModule} from "../app.module";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 
 @NgModule({
@@ -20,10 +22,11 @@ import {InMemoryUsersService} from "../service/in-memory-users.service";
     LdapAddComponent,
     LdapEditComponent,
     AlertComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+    //BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppMaterialModule,
@@ -31,7 +34,7 @@ import {InMemoryUsersService} from "../service/in-memory-users.service";
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryUsersService, {dataEncapsulation: false}
-    )
-  ]
+    ),
+  ],
 })
 export class LdapManagementModule { }

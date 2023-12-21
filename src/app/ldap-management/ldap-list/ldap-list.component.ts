@@ -37,15 +37,6 @@ export class LdapListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  // private getUsers(): void {
-  //   if (this.unactiveSelected) {
-  //     this.dataSource.data = LDAP_USERS.filter(user
-  //       => !user.active
-  //     )
-  //   } else {
-  //     this.dataSource.data = LDAP_USERS;
-  //   }
-  // }
   getUsers(): void {
     this.usersService.getUsers().subscribe(
       users => {
@@ -66,7 +57,7 @@ export class LdapListComponent implements OnInit {
   }
 
   edit(login: string): void {
-    this.router.navigate(['user/', login]).then((e) => {
+    this.router.navigate(['users/', login]).then((e) => {
       if (!e) {
         console.error('Navigation has failed!');
       }
@@ -74,7 +65,7 @@ export class LdapListComponent implements OnInit {
   }
 
   addUser() {
-    this.router.navigate(['/user/add']).then((e) => { // TODO /user/add
+    this.router.navigate(['/users/add']).then((e) => {
       if (!e) {
         console.log('Navigation has failed!');
       }
